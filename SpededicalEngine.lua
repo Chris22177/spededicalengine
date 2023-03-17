@@ -1,10 +1,11 @@
--- UNDETECTED ENGINES AT LOW PRICES --
+-- **SPEDEDICALENGINE.CO** --
 -- BinaryLUA. performance > readable. --
 
 -- InsertHash into CentralTasking (index) --
 [ctype] LUA::InsertHash::NEW("/CType.c")
- -- allocate lua memory and system memory (prevent crashes and detections) --
-[sartv2] LUA::Memory::ALLOCATE(m.min(1024), m.max( LUA::Memory::READ("SYS.MEMORYAVALIABLE") * 0C ))
+-- allocate lua memory and system memory (prevent crashes and detections) --
+-- yes we use floats in BinaryLUA you dumb spededical --
+[sartv2] LUA::Memory::ALLOCATE(ctype.allocate(), LUA::Memory::READ("SYS.MEMORYAVALIABLE") * 0.75)
 
 -- engine weed --
 -- Create SessionDump in case of detection, (dumps memory before checked) --
