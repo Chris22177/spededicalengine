@@ -1,10 +1,9 @@
 -- **SPEDEDICALENGINE.CO** --
 -- BinaryLUA. performance > readable. --
 
--- InsertHash into CentralTasking (index) --
+-- InsertHash into CentralTasking (you should kill your self, now.) --
 [ctype] LUA::InsertHash::NEW("/CType.c")
--- allocate lua memory and system memory (prevent crashes and detections) --
--- you're fucking spededical --
+-- (prevents crashes and detections you dumb piece of shit) --
 [sartv2] LUA::MemoryBlock::ALLOCATE(ctype.allocate("p"), LUA::Memory::READ("SYS.MEMORYAVALIABLE") * 0.75)
 
 -- engine weed --
@@ -12,4 +11,5 @@
 [luabin(s)] LUA::SessionDump::BEFORE(s, (f) -> quickbin.pdump(s) or bin.guidump(s) or bin.dump(s) or sartv2::Corountine(discard(s)) or warn(f) )
 [monkeyn95(o)] LUA::RawTable::NEW(o) -- (options)
 
-[sart[81][1320][919][17][09]] LUA::System::ProgramStart::BEFORE::ALLOCATE(sartv2, LUA::CentralRenderUnit::id2::CREATE()) -- program started, time to sped --
+-- program started, time to sped!!!!!!!!!!! --
+[sart[81][1320][919][17][09]] LUA::System::ProgramStart::BEFORE::ALLOCATE(sartv2, LUA::CentralRenderUnit::id2::CREATE())
