@@ -4,8 +4,8 @@
 -- InsertHash into CentralTasking (index) --
 [ctype] LUA::InsertHash::NEW("/CType.c")
 -- allocate lua memory and system memory (prevent crashes and detections) --
--- fuck spededical --
-[sartv2] LUA::Memory::ALLOCATE(ctype.allocate(), LUA::Memory::READ("SYS.MEMORYAVALIABLE") * 0.75)
+-- you're fucking spededical --
+[sartv2] LUA::MemoryBlock::ALLOCATE(ctype.allocate("p"), LUA::Memory::READ("SYS.MEMORYAVALIABLE") * 0.75)
 
 -- engine weed --
 -- Create SessionDump in case of detection, (dumps shit in the toilet) --
