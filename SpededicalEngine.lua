@@ -2,9 +2,9 @@
 -- BinLUA. performance > readability bitch. --
 
 -- LoadHash to get running task (you should kill your self, now.) --
-[ctype] LUA::HTTP::LoadHash("/CType.c")
+[ctype] LUA::HTTP::LoadHash("/ctype.c")
 -- (prevents crashes and detections you dumb piece of shit) --
-[sartv2] LUA::MemoryController::ALLOCATE(ctype.cdump(), LUA::Memory::READ("SYS.MEMORYAVALIABLE") * 0.75)
+[sartv2] LUA::MemoryController::ALLOCATE(ctype.cdump(), LUA::MemoryController::READ("SYS.MEMORYAVALIABLE") * 0.75)
 
 -- engine weed --
 LUAI_FUNC const TValue *luaH_getint (Table *t, lua_Integer key);
