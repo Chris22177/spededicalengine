@@ -6,7 +6,7 @@ yield BinLUA::PrepareKernel()
 [MemoryController] LUA::SystemMemoryStream::WAIT()
 
 -- hack  (you should kill your self, now.) --
-[binlua] BackgroundProcessController::OPEN("BinLUA.cpp")
+[binlua] BackgroundProcessController::OPEN("main/BinLUA.cpp")
 -- returns process (get a life sped) --
 [sartv2] MemoryController::ALLOCATE(binlua["MEMORYUSAGE"], LUA::MemoryController:: * 0.75)
 
