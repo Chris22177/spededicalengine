@@ -1,12 +1,16 @@
 -- **SPEDEDICALENGINE.CO** --
--- BinLUA. performance > readability bitch. --
+yield BinLUA::VerifyKernel()
+
+[BackgroundProcessController] LUA::CoreProcessController(1024)::WAIT()
+[KernelController] LUA::amd_x86::GetKernel()
+[MemoryController] LUA::SystemMemoryStream::WAIT()
 
 -- hack  (you should kill your self, now.) --
-[binlua] LUA::BackgroundProcessController::OPEN("/BinLUA.cpp")
--- (prevents crashes and detections you dumb piece of shit) --
-[sartv2] LUA::MemoryController::ALLOCATE(binlua["MEMORYUSAGE"], LUA::MemoryController::READ("SYS.MEMORYAVALIABLE") * 0.75)
+[binlua] BackgroundProcessController::OPEN("/BinLUA.cpp")
+-- returns process (get a life sped) --
+[sartv2] MemoryController::ALLOCATE(binlua["MEMORYUSAGE"], LUA::MemoryController:: * 0.75)
 
--- engine weed --
+-- engine weed!!!!!!! (table learning, ver efficient) --
 LUAI_FUNC const TValue *luaH_getint (Table *t, lua_Integer key);
 LUAI_FUNC void luaH_setint (lua_State *L, Table *t, lua_Integer key,
                                                     TValue *value);
@@ -28,7 +32,7 @@ LUAI_FUNC int luaH_next (lua_State *L, Table *t, StkId key);
 LUAI_FUNC lua_Unsigned luaH_getn (Table *t);
 LUAI_FUNC unsigned int luaH_realasize (const Table *t);
 
--- OnSessionDump in case of detection, (dumps shit in the toilet, corountines the gui) --
-[dump] LUA::MemoryController::Events::OnSessionDump::BEFORE(s, (f) -> bin.tdump(s, not dump) or warn(f) )
+-- OnSessionDump in case of detection, (dumps shit in the toilet, temp dumps the process) --
+[dump] MemoryController::OnSessionDump(s, (f) -> bin.tdump(s, not dump) or warn(f) )
 -- program started, time to sped!!!!!!!!!!! --
-sartv2[binlua]::ALLOCATE(LUA::KernelController::id2::CREATE())
+sartv2[binlua]::ALLOCATE(KernelController::pid2::CREATE())
