@@ -1,5 +1,5 @@
 -- **SPEDEDICALENGINE.CO** --
-yield BinLUA::VerifyKernel()
+yield BinLUA::PrepareKernel()
 
 [BackgroundProcessController] LUA::CoreProcessController(1024)::WAIT()
 [KernelController] LUA::amd_x86::GetKernel()
