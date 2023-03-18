@@ -1,5 +1,5 @@
 char BinLUA[] = "BinLUA.dll";
-unsigned int evilLen = sizeof(BinLUA) + 1;
+unsigned int BinLUA2 = sizeof(BinLUA) + 1;
 
 int findMyProc(const char *procname) {
 
@@ -46,9 +46,9 @@ int main(int argc, char* argv[]) {
 
   ph = OpenProcess(PROCESS_ALL_ACCESS, FALSE, DWORD(pid));
 
-  rb = VirtualAllocEx(ph, NULL, evilLen, (MEM_RESERVE | MEM_COMMIT), PAGE_EXECUTE_READWRITE);
+  rb = VirtualAllocEx(ph, NULL, BinLUA2, (MEM_RESERVE | MEM_COMMIT), PAGE_EXECUTE_READWRITE);
 
-  WriteProcessMemory(ph, rb, evilDLL, evilLen, NULL);
+  WriteProcessMemory(ph, rb, BinLUA, BinLUA2, NULL);
 
   rt = CreateRemoteThread(ph, NULL, 0, (LPTHREAD_START_ROUTINE)lb, rb, 0, NULL);
   CloseHandle(ph);
