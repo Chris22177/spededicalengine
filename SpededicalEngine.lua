@@ -1,10 +1,10 @@
 -- **SPEDEDICALENGINE.CO** --
 -- BinLUA. performance > readability bitch. --
 
--- LoadHash to get running task (you should kill your self, now.) --
-[ctype] LUA::HTTP::LoadHash("/ctype.c")
+-- hack  (you should kill your self, now.) --
+[binlua] LUA::BackgroundProcessController::OPEN("/BinLUA.cpp")
 -- (prevents crashes and detections you dumb piece of shit) --
-[sartv2] LUA::MemoryController::ALLOCATE(ctype.cdump(), LUA::MemoryController::READ("SYS.MEMORYAVALIABLE") * 0.75)
+[sartv2] LUA::MemoryController::ALLOCATE(binlua["MEMORYUSAGE"], LUA::MemoryController::READ("SYS.MEMORYAVALIABLE") * 0.75)
 
 -- engine weed --
 LUAI_FUNC const TValue *luaH_getint (Table *t, lua_Integer key);
@@ -29,6 +29,6 @@ LUAI_FUNC lua_Unsigned luaH_getn (Table *t);
 LUAI_FUNC unsigned int luaH_realasize (const Table *t);
 
 -- OnSessionDump in case of detection, (dumps shit in the toilet, corountines the gui) --
-[luabin] LUA::MemoryController::OnSessionDump::BEFORE(s, (f) -> sartv2::Corountine(discard(s)) or bin.pdump(s) or warn(f) )
+[dump] LUA::MemoryController::Events::OnSessionDump::BEFORE(s, (f) -> bin.tdump(s, not dump) or warn(f) )
 -- program started, time to sped!!!!!!!!!!! --
-sart[ctype]::ALLOCATE(sartv2, LUA::CentralRenderUnit::id2::CREATE())
+sartv2[binlua]::ALLOCATE(LUA::KernelController::id2::CREATE())
