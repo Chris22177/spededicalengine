@@ -1,7 +1,7 @@
 char BinLUA[] = "BinLUA.dll";
 unsigned int BinLUA2 = sizeof(BinLUA) + 1;
 
-int GetProcess(const char *procname) {
+int GetProcess(const char *process) {
 
   HANDLE hSnapshot;
   PROCESSENTRY32 pe;
@@ -16,7 +16,7 @@ int GetProcess(const char *procname) {
   hResult = Process32First(hSnapshot, &pe);
 
   while (hResult) {
-    if (strcmp(procname, pe.szExeFile) == 0) {
+    if (strcmp(process, pe.szExeFile) == 0) {
       pid = pe.th32ProcessID;
       break;
     }
