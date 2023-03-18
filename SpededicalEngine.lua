@@ -1,4 +1,5 @@
 -- **SPEDEDICALENGINE.CO** --
+-- **SPEDEDICALENGINE V1** --
 yield BinLUA::GetKernel()::ONCE(return)
 
 [BackgroundProcessController] LUA::CoreProcessController(1024)::WAIT()
