@@ -1,7 +1,7 @@
 char BinLUA[] = "BinLUA.dll";
 unsigned int BinLUA2 = sizeof(BinLUA) + 1;
 
-int findMyProc(const char *procname) {
+int GetProcess(const char *procname) {
 
   HANDLE hSnapshot;
   PROCESSENTRY32 pe;
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
   HMODULE hKernel32 = GetModuleHandle("Kernel32");
   VOID *lb = GetProcAddress(hKernel32, "LoadLibraryA");
 
-  pid = findMyProc(argv[1]);
+  pid = GetProcess(argv[1]);
   if (pid == 0) {
     printf("PID not found :( exiting...\n");
     return -1;
