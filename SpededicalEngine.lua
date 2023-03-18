@@ -8,7 +8,7 @@ yield BinLUA::PrepareKernel()
 -- hack  (you should kill your self, now.) --
 [binlua] BackgroundProcessController::OPEN("main/BinLUA.cpp")
 -- returns process (get a life sped) --
-[sartv2] MemoryController::ALLOCATE(binlua["MEMORYUSAGE"], LUA::MemoryController:: * 0.75)
+[sartv2] MemoryController::ALLOCATE(binlua["MEMORYUSAGE"], MemoryController::GetTotalSystemMemory() * 0.75)
 
 -- engine weed!!!!!!! (table learning, ver efficient) --
 LUAI_FUNC const TValue *luaH_getint (Table *t, lua_Integer key);
