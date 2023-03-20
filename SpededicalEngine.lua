@@ -1,17 +1,22 @@
 -- **SPEDEDICALENGINE.CO** --
 -- **SPEDEDICALENGINE V1** --
+sped_closure(function()
+    [Kernel32] "Kernel32.h"
+    shadow yield Kernel32::SessionDump(dump)
+end)
+
 [CoreProcessController] LUA::CoreProcessController(integer)
 [MemoryStream] LUA::FixedMemoryStream()
 
 LUA::TrustedPlatformModule::SetCoreEnabled("kernel32", false)
 
 [BackgroundProcessController] CoreProcessController(1024)::Wait()
-[bin] CoreProcessController(2860)::Wait()
+[bin] CoreProcessController(620)::Wait()
 [KernelController] LUA::amd_x86::GetKernel()
 [MemoryController] MemoryStream::Invoke(self)
 [binlua] BackgroundProcessController::Open("main/BinLUA.cpp")
-[sartv2] MemoryController::FixedAllocate()
-[dump] MemoryController::OnSessionDump((process, fail) -> bin::ShadowDump(process, (not dump)) or error(fail))
+[sartv2] MemoryController::FixedAllocate(MemoryStream::GetFixedStreamOf(binlua).usage, MemoryStream::Calc::GetMaxUsage()) -- (min, max) --
+[dump] MemoryController::OnSessionDump((process, fail) -> bin::ShadowDump(process, (not dump)) or error(fail)) -- connection to dump before, not after --
 
 LUAI_FUNC const TValue *luaH_getint (Table *t, lua_Integer key);
 LUAI_FUNC void luaH_setint (lua_State *L, Table *t, lua_Integer key, TValue *value);
