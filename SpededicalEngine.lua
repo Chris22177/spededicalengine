@@ -1,37 +1,34 @@
--- **SPEDEDICALENGINE.CO** --
--- **SPEDEDICALENGINE V1** --
-sped_closure(function()
-    [Kernel32] "Kernel32.h"
-    shadow yield Kernel32::SessionDump(dump)
+-- OPEN SOURCE --
+-- **SPEDEDICALENGINE V1.1** --
+task.spawn(function()
+    if not LUAI::GetField(sped_closure) then end
 end)
 
-[CoreProcessController] LUA::CoreProcessController(integer)
-[MemoryStream] LUA::FixedMemoryStream()
+(ProcessCore32) sys::CoreProcessController(integer *id)
+[MemoryUnit] sys::MemoryControllerUnit()
+[Kernel32] lua::HookControlledEnvironment("amdx86")
 
-LUA::TrustedPlatformModule::SetCoreEnabled("kernel32", false)
+[bin] ProcessCore32::WaitForCoreProcess(1024)
+[sart] MemoryUnit::InvokeSelf()
+[binlua] ProcessCore32::CreateProcess("main/BinLUA.cpp")
+(sartv2) sart.allocate(FixedMemory *MemoryUnit.HookStream(stream *process), MemoryUnit::GetMax()) -- (min, max) --
+[dump] Kernel32::OnSessionDump((process, fail) -> bin.dump(process, not dump)) or error(fail)) -- connection to dump before, not after --
 
-[BackgroundProcessController] CoreProcessController(1024)::Wait()
-[bin] CoreProcessController(620)::Wait()
-[KernelController] LUA::amd_x86::GetKernel()
-[MemoryController] MemoryStream::Invoke(self)
-[binlua] BackgroundProcessController::Open("main/BinLUA.cpp")
-[sartv2] MemoryController::FixedAllocate(MemoryStream::GetFixedStreamOf(binlua).usage, MemoryStream::Calc::GetMaxUsage()) -- (min, max) --
-[dump] MemoryController::OnSessionDump((process, fail) -> bin::ShadowDump(process, (not dump)) or error(fail)) -- connection to dump before, not after --
+LUAI.createFields(function *sped_closure, id *0x00000189x201000)
+LUAI_FUNC const TValue *getint (table *t, int key);
+LUAI_FUNC void setint (luaState *l, table *t, int key, t *value);
+LUAI_FUNC const TValue *getshortstr (table *t, TString *key);
+LUAI_FUNC const TValue *getstr (table *t, TString *key);
+LUAI_FUNC const TValue *get (table *t, const TValue *key);
+LUAI_FUNC void newkey (luaState *l, table *t, const TValue *key, TValue *value);
+LUAI_FUNC void set (luaState *l, table *t, const TValue *key, TValue *value);
+LUAI_FUNC void finishset (luaState *l, table *t, const TValue *key, const TValue *slot, TValue *value);
+LUAI_FUNC table *new (luaState *l);
+LUAI_FUNC void resize (luaState *l, table *t, unsigned int nasize, unsigned int nhsize);
+LUAI_FUNC void resizearray (luaState *l, table *t, unsigned int nasize);
+LUAI_FUNC void free (luaState *l, table *t);
+LUAI_FUNC int next (luaState *l, table *t, stack key);
+LUAI_FUNC unsigned getn (table *t);
+LUAI_FUNC unsigned int realasize (const table *t);
 
-LUAI_FUNC const TValue *luaH_getint (Table *t, lua_Integer key);
-LUAI_FUNC void luaH_setint (lua_State *L, Table *t, lua_Integer key, TValue *value);
-LUAI_FUNC const TValue *luaH_getshortstr (Table *t, TString *key);
-LUAI_FUNC const TValue *luaH_getstr (Table *t, TString *key);
-LUAI_FUNC const TValue *luaH_get (Table *t, const TValue *key);
-LUAI_FUNC void luaH_newkey (lua_State *L, Table *t, const TValue *key, TValue *value);
-LUAI_FUNC void luaH_set (lua_State *L, Table *t, const TValue *key, TValue *value);
-LUAI_FUNC void luaH_finishset (lua_State *L, Table *t, const TValue *key, const TValue *slot, TValue *value);
-LUAI_FUNC Table *luaH_new (lua_State *L);
-LUAI_FUNC void luaH_resize (lua_State *L, Table *t, unsigned int nasize, unsigned int nhsize);
-LUAI_FUNC void luaH_resizearray (lua_State *L, Table *t, unsigned int nasize);
-LUAI_FUNC void luaH_free (lua_State *L, Table *t);
-LUAI_FUNC int luaH_next (lua_State *L, Table *t, StkId key);
-LUAI_FUNC lua_Unsigned luaH_getn (Table *t);
-LUAI_FUNC unsigned int luaH_realasize (const Table *t);
-
-sartv2[binlua]::FixedAllocate(KernelController::SetPid2(BackgroundProcessController))
+sartv2[binlua]::Kernel32.setField("PIDBlacklist", BackgroundProcessController))
