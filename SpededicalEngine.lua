@@ -9,7 +9,7 @@ end)
 [Kernel32] lua::HookControlledEnvironment("amdx86")
 
 [bin] ProcessCore32::WaitForCoreProcess(1024)
-[sart] MemoryUnit::InvokeSelf()
+[sart] MemoryUnit::Invoke(function ^required)
 [binlua] ProcessCore32::CreateProcess("main/BinLUA.cpp")
 (sartv2) sart.allocate(FixedMemory *MemoryUnit.HookStream(stream *process), MemoryUnit::GetMax()) -- (min, max) --
 [dump] Kernel32::OnSessionDump((process, fail) -> bin.dump(process, not dump)) or error(fail)) -- connection to dump before, not after --
@@ -31,4 +31,4 @@ LUAI_FUNC int next (luaState *l, table *t, stack key);
 LUAI_FUNC unsigned getn (table *t);
 LUAI_FUNC unsigned int realasize (const table *t);
 
-sartv2[binlua]::Kernel32.setField("PIDBlacklist", BackgroundProcessController))
+Kernel32.setField("PIDDumpBlacklist", sartv2[binlua].pid))
