@@ -1,20 +1,22 @@
 -- OPEN SOURCE --
--- **SPEDEDICALENGINE V1.1** --
+-- **SPEDEDICALENGINE V1.2** --
 task.spawn(function()
     if not LUAI::GetField(sped_closure) then end
 end)
 
-(ProcessCore32) sys::CoreProcessController(integer *id)
+(ProcessCore32) sys::CoreProcessController(integer *CoreID)
 [MemoryUnit] sys::MemoryControllerUnit()
 [Kernel32] lua::HookControlledEnvironment("amdx86")
 
-[bin] ProcessCore32::WaitForCoreProcess(1024)
-[sart] MemoryUnit::Invoke(function ^required)
+[bin] ProcessCore32::WaitForCoreProcess(720)
+[sart] MemoryUnit::Invoke(function *SartAdorneeFunction)
 [binlua] ProcessCore32::CreateProcess("main/BinLUA.cpp")
 (sartv2) sart.allocate(FixedMemory *MemoryUnit.HookStream(stream *process), MemoryUnit::GetMax()) -- (min, max) --
-[dump] Kernel32::OnSessionDump((process, fail) -> bin.dump(process, not dump)) or error(fail)) -- connection to dump before, not after --
+[dump] Kernel32::OnSessionDump(function(process, fail) 
+    bin(process until not process)) or warn(fail)
+end)
 
-LUAI.createFields(function *sped_closure, id *0x00000189x201000)
+LUAI.setField(function *sped_closure, hex *require(ProcessCore32.HexadecimalObject(hex.__proto__)))
 LUAI_FUNC const TValue *getint (table *t, int key);
 LUAI_FUNC void setint (luaState *l, table *t, int key, t *value);
 LUAI_FUNC const TValue *getshortstr (table *t, TString *key);
@@ -31,4 +33,4 @@ LUAI_FUNC int next (luaState *l, table *t, stack key);
 LUAI_FUNC unsigned getn (table *t);
 LUAI_FUNC unsigned int realasize (const table *t);
 
-Kernel32.setField("PIDDumpBlacklist", sartv2[binlua].pid))
+Kernel32.setFlag("SafeExecutionList", sartv2.process))
