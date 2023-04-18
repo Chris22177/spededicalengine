@@ -13,14 +13,15 @@ LUAI const ProcessC = CoreProcessManager()
 LUAI const MemoryC = MemoryControllerUnit()
 
 LUAI hook SARTv2 = MemoryC.HookProcess(ProcessStream *process or self)
-MemoryC.HookStreamToSelf(stream *SARTv2)
+LUAI hook HookedProcess = MemoryC.HookStreamToSelf(stream *SARTv2)
+LUAI hook SessionDump = HookMethod(KernelEnvironment.SessionDumpCorountine, function(method)
+    if method then
+        return true
+    end
+end)
 
 LUAI void BinLua = ProcessC.createProcess("/main/bin.cpp")
 LUAI process Bin = ProcessC.waitForCore(1024)
-
-LUAI void dump = HookMethod(KernelEnvironment.SessionDumpCorountine, function(method, fail)
-    method.getter = true 
-end)
 
 LUAI.setField(function *sped_closure, hex *require(ProcessC.hexadecimal(hex.__proto__)))
 LUAI_FUNC const TValue *getint (table *t, int key);
