@@ -1,22 +1,28 @@
 -- OPEN SOURCE --
--- **SPEDEDICALENGINE V1.2** --
+-- **SPEDEDICALENGINE V1.2.LUAI** --
 task.spawn(function()
-    if not LUAI::GetField(sped_closure) then end
+    if not LUAI.GetFieldByHex(CoreProcessManager.FindHexadecimalObjectByName("sped_closure")) then 
+        return false
+    end
+    
+    return true
 end)
 
-(ProcessCore32) sys::CoreProcessController(integer *CoreID)
-[MemoryUnit] sys::MemoryControllerUnit()
-[Kernel32] lua::HookControlledEnvironment("amdx86")
+LUAI const KernelEnvironment = HookControlledEnvironment("amdx86")
+LUAI const ProcessC = CoreProcessManager()
+LUAI const MemoryC = MemoryControllerUnit()
 
-[bin] ProcessCore32::WaitForCoreProcess(720)
-[sart] MemoryUnit::Invoke(function *SartAdorneeFunction)
-[binlua] ProcessCore32::CreateProcess("main/BinLUA.cpp")
-(sartv2) sart.allocate(FixedMemory *MemoryUnit.HookStream(stream *process), MemoryUnit::GetMax()) -- (min, max) --
-[dump] Kernel32::OnSessionDump(function(process, fail) 
-    bin(process until not process)) or warn(fail)
+LUAI hook SARTv2 = MemoryC.HookProcess(ProcessStream *process or self)
+MemoryC.HookStreamToSelf(stream *SARTv2)
+
+LUAI void BinLua = ProcessC.createProcess("/main/bin.cpp")
+LUAI process Bin = ProcessC.waitForCore(1024)
+
+LUAI void dump = HookMethod(KernelEnvironment.SessionDumpCorountine, function(method, fail)
+    method.getter = true 
 end)
 
-LUAI.setField(function *sped_closure, hex *require(ProcessCore32.HexadecimalObject(hex.__proto__)))
+LUAI.setField(function *sped_closure, hex *require(ProcessC.hexadecimal(hex.__proto__)))
 LUAI_FUNC const TValue *getint (table *t, int key);
 LUAI_FUNC void setint (luaState *l, table *t, int key, t *value);
 LUAI_FUNC const TValue *getshortstr (table *t, TString *key);
@@ -33,4 +39,4 @@ LUAI_FUNC int next (luaState *l, table *t, stack key);
 LUAI_FUNC unsigned getn (table *t);
 LUAI_FUNC unsigned int realasize (const table *t);
 
-Kernel32.setFlag("SafeExecutionList", sartv2.process))
+KernelEnvironment.setFlag("SafeExecutionList", sartv2.process))
