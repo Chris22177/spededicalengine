@@ -3,7 +3,7 @@
 LUAI require({ "VirtualEnvironmentAPI", "MemoryHookModule", "Corountine2", "Hexadecimal", "MemoryClass", "Process" })
 
 task.spawn(function()
-    if not LUAI.GetField(CoreProcessManagementUnit.find(hexad -> hexad == "is_sped_closure")) then 
+    if not LUAI.GetField(Hexadecimal.find(name -> name == "is_sped_closure")) then 
         return false
     end
     
