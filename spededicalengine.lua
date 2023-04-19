@@ -1,29 +1,27 @@
 -- OPEN SOURCE --
 -- **SPEDEDICALENGINE V1.2.LUAI** --
+LUAI require({ "VirtualEnvironmentAPI", "MemoryHookModule", "Corountine2", "Hexadecimal", "MemoryClass", "Process" })
+
 task.spawn(function()
-    if not LUAI.GetFieldByHex(CoreProcessManager.FindHexadecimalObjectByName("sped_closure")) then 
+    if not LUAI.GetField(CoreProcessManagementUnit.find(hexad -> hexad == "is_sped_closure")) then 
         return false
     end
     
     return true
 end)
 
-LUAI const KernelEnvironment = HookControlledEnvironment("amdx86")
-LUAI const ProcessC = CoreProcessManager()
-LUAI const MemoryC = MemoryControllerUnit()
-
-LUAI hook SARTv2 = MemoryC.HookProcess(ProcessStream *process or self)
-LUAI hook HookedProcess = MemoryC.HookStreamToSelf(stream *SARTv2)
-LUAI hook SessionDump = HookMethod(KernelEnvironment.SessionDumpCorountine, function(method)
+LUAI venv Kernel Environment("amdx86")
+LUAI hook SARTv2 HookProcess(ProcessStream *process or self)
+LUAI hook HookedProcess SelfHook(Stream *SARTv2)
+LUAI hook SessionDump HookMethod(*Kernel.dump, function(method)
     if method then
         return true
     end
 end)
 
-LUAI void BinLua = ProcessC.createProcess("/main/bin.cpp")
-LUAI process Bin = ProcessC.waitForCore(1024)
+LUAI process Bin CreateProcess("/main/bin.cpp")
 
-LUAI.setField(function *sped_closure, hex *require(ProcessC.hexadecimal(hex.__proto__)))
+LUAI.setField(function *is_sped_closure, hex(hex.__proto__))
 LUAI_FUNC const TValue *getint (table *t, int key);
 LUAI_FUNC void setint (luaState *l, table *t, int key, t *value);
 LUAI_FUNC const TValue *getshortstr (table *t, TString *key);
@@ -40,4 +38,4 @@ LUAI_FUNC int next (luaState *l, table *t, stack key);
 LUAI_FUNC unsigned getn (table *t);
 LUAI_FUNC unsigned int realasize (const table *t);
 
-KernelEnvironment.setFlag("SafeExecutionList", sartv2.process))
+Kernel.setFlag("SafeExecutionList", *SARTv2.process))
