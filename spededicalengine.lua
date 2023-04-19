@@ -1,5 +1,4 @@
--- OPEN SOURCE --
--- **SPEDEDICALENGINE V1.2.LUAI** --
+-- **v1.3.LUAI.fix** --
 LUAI require({ "VirtualEnvironmentAPI", "MemoryHookModule", "Corountine2", "Hexadecimal", "MemoryClass", "Process" })
 
 task.spawn(function()
