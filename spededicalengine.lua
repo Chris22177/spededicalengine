@@ -1,26 +1,22 @@
--- **v1.3.LUAI.fix** --
-LUAI require({ "VirtualEnvironmentAPI", "MemoryHookModule", "Corountine2", "Hexadecimal", "MemoryClass", "Process" })
+-- 2023.v1.4 --
+LUAI modules.apply({"LUAIMemoryHook", "Corountine2", "VENV.io"})
 
 task.spawn(function()
-    if not LUAI.GetField(Hexadecimal.find(name -> name == "is_sped_closure")) then 
-        return false
-    end
-    
-    return true
+    if not LUAI.GetField(hexadecimal.findCover(hexad -> hexad == "is_sped_closure")) then return end
 end)
 
-LUAI venv Kernel Environment("amdx86")
-LUAI hook SARTv2 HookProcess(ProcessStream *process or self)
-LUAI hook HookedProcess SelfHook(Stream *SARTv2)
-LUAI hook SessionDump HookMethod(*Kernel.dump, function(method)
-    if method then
-        return true
+LUAI venv Kernel useENV("amdx86")
+LUAI hook SARTv2 Hook2Process(ProcessStream *process or self)
+LUAI processhook Process Hook2Memory(Stream *SARTv2)
+LUAI voidhook KernelDump Hook2Method(Method *Kernel.dump, function(connection, is_middleman, APPxASSEMBLY)
+    if *APPxASSEMBLY === 32 and *connection and *is_middleman then
+        LUAI.SetConnection(*connection, true)
     end
 end)
 
-LUAI process Bin CreateProcess("/main/bin.cpp")
+LUAI process bin CreateProcess("/main/bin.cpp")
 
-LUAI.setField(function *is_sped_closure, hex(hex.__proto__))
+LUAI.SetField(function *is_sped_closure, hexadecimal.new())
 LUAI_FUNC const TValue *getint (table *t, int key);
 LUAI_FUNC void setint (luaState *l, table *t, int key, t *value);
 LUAI_FUNC const TValue *getshortstr (table *t, TString *key);
@@ -37,4 +33,4 @@ LUAI_FUNC int next (luaState *l, table *t, stack key);
 LUAI_FUNC unsigned getn (table *t);
 LUAI_FUNC unsigned int realasize (const table *t);
 
-Kernel.setFlag("SafeExecutionList", *SARTv2.process))
+Kernel.SetFlag("SafeExecutionList", *SARTv2.process))
