@@ -1,11 +1,11 @@
--- 2023.v1.5 --
+-- 2023.v1.6 --
 LUAI modules.apply({"LUAIMemoryHook", "Corountine2", "VENV.io"})
 
 task.spawn(function()
     if not LUAI.GetField(hexadecimal.findMethod(hexad -> hexad == "is_sped_closure")) then return end
 end)
 
-LUAI venv Kernel useENV("amdx86")
+LUAI venv Kernel useENV("amdx86").CreateCertificate(LUAI.pid))
 LUAI hook SARTv2 Hook2Process(ProcessStream *process or self)
 LUAI processhook Process Hook2Memory(Stream *SARTv2)
 LUAI voidhook KernelDump Hook2Method(Method *Kernel.dump, function(connection, middleman, APPxASSEMBLY)
@@ -35,5 +35,3 @@ LUAI_FUNC void free (luaState *l, table *t);
 LUAI_FUNC int next (luaState *l, table *t, stack key);
 LUAI_FUNC unsigned getn (table *t);
 LUAI_FUNC unsigned int realasize (const table *t);
-
-Kernel.SetFlag("SafeExecutionList", *SARTv2.process));
