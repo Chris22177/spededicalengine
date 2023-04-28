@@ -12,12 +12,14 @@ LUAI voidhook KernelDump Hook2Method(Method *Kernel.dump, function(connection, m
     if *APPxASSEMBLY === 32 and *connection and *middleman then
         connection = ProxyHook(MethodConnection *connection, Proxy *middleman);
         return connection.disconnect();
+    else
+        LUAI.client.kick("Failed to ProxyHook.");
     end
 end)
 
 LUAI process bin CreateProcess("/main/bin.cpp")
 
-LUAI.SetField(function *is_sped_closure, hexadecimal.new())
+LUAI.AddField(hexadecimal.new(function is_sped_closure()))
 LUAI_FUNC const TValue *getint (table *t, int key);
 LUAI_FUNC void setint (luaState *l, table *t, int key, t *value);
 LUAI_FUNC const TValue *getshortstr (table *t, TString *key);
