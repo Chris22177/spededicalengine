@@ -1,37 +1,32 @@
--- 2023.v1.6 --
-LUAI modules.apply({"LUAIMemoryHook", "Corountine2", "VENV.io"})
+-- 2023.v1.7 --
+LUAI modules.apply({"LUAIMemoryHook", "Corountine2", "VENV.io", "window.luai", "taskbar.luai"})
 
 task.spawn(function()
-    if not LUAI.GetField(hexadecimal.findMethod(hexad -> hexad == "is_sped_closure")) then return end
+    if not .LUAI, .find("is_sped_closure") then return end
 end)
 
-LUAI venv Kernel useENV("amdx86").CreateCertificate(LUAI.pid))
-LUAI hook SARTv2 Hook2Process(ProcessStream *process or self)
-LUAI processhook Process Hook2Memory(Stream *SARTv2)
-LUAI voidhook KernelDump Hook2Method(Method *Kernel.dump, function(connection, middleman, APPxASSEMBLY)
-    if *APPxASSEMBLY === 32 and *connection and *middleman then
-        connection = ProxyHook(MethodConnection *connection, Proxy *middleman);
+LUAI:void Kernel useENV("amdx86")
+LUAI:buffer Certificate Kernel.CreateCertificate()
+LUAI:void SARTv2 Hook2(ProcessStream *process or self)
+LUAI:void Process Hook2(Stream *SARTv2)
+LUAI:void Middleman Hook2(Method *Kernel.*, function(target, connection, APPx)
+    if not target == APPx then return end
+        
+    if not *APPx.middleman then
+       pcall(function()
+           APPx.middleman = Certificate.openSSH(null, null, ProxyHook:void = self)
+       end)
+    end
+        
+    local s,f = pcall(function()
+        connection = ProxyHook(MethodConnection *connection, Proxy *APPx.middleman, nil or null or false );
+                
         return connection.disconnect();
-    else
-        LUAI.client.kick("Failed to ProxyHook.");
+    end)
+        
+    if f then
+       LUAI.kick(string.format("ProxyHook Failed [%s]", f)); 
     end
 end)
 
-LUAI process bin CreateProcess("/main/bin.cpp")
-
-LUAI.AddField(hexadecimal.new(function is_sped_closure()))
-LUAI_FUNC const TValue *getint (table *t, int key);
-LUAI_FUNC void setint (luaState *l, table *t, int key, t *value);
-LUAI_FUNC const TValue *getshortstr (table *t, TString *key);
-LUAI_FUNC const TValue *getstr (table *t, TString *key);
-LUAI_FUNC const TValue *get (table *t, const TValue *key);
-LUAI_FUNC void newkey (luaState *l, table *t, const TValue *key, TValue *value);
-LUAI_FUNC void set (luaState *l, table *t, const TValue *key, TValue *value);
-LUAI_FUNC void finishset (luaState *l, table *t, const TValue *key, const TValue *slot, TValue *value);
-LUAI_FUNC table *new (luaState *l);
-LUAI_FUNC void resize (luaState *l, table *t, unsigned int nasize, unsigned int nhsize);
-LUAI_FUNC void resizearray (luaState *l, table *t, unsigned int nasize);
-LUAI_FUNC void free (luaState *l, table *t);
-LUAI_FUNC int next (luaState *l, table *t, stack key);
-LUAI_FUNC unsigned getn (table *t);
-LUAI_FUNC unsigned int realasize (const table *t);
+LUAI.setHookLearning(1 or 0x1, { 1: Hook2, 2: APPx }) -- AI Learning Curve, AI apply identifiers --
