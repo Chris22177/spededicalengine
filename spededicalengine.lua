@@ -1,4 +1,4 @@
--- 2023.v1.8 --
+-- 2023.v2.0 --
 LUAI :: APPLY
 {
     "LuaiWindowsClass",
@@ -13,32 +13,19 @@ LUAI :: SPAWN:ASYNC {
     end 
 }
 
-LuaiWindowsClass :: private void AncestorWindow(object o, EventArgs e)
+LuaiWindowsClass :: private void AncestorWindow(object sender, EventArgs e)
 {
+  InitalizeComponent()
   new Form().Show()
 }
 
-LUAI : void Kernel useENV("amdx86")
-LUAI : void Certificate Kernel.CreateCertificate()
-LUAI : void SARTv2 Hook2(Stream *process)
-LUAI : void Process Hook2(Stream *SARTv2)
+LUAI : static void Physics LuaiWindowsClass.GraphicsModal.Physics
+LUAI : void SARTv2 LuaiHooks::HookDirectX(*snapshot)
+LUAI : void Process LuaiHooks::CookHook(*SARTv2)
 
-LUAI:void Middleman Hook2(Method *Kernel.*, function(target, connection, APPx)
-    if not *target == *APPx then return end
-        
-    if not *APPx.middleman then
-       pcall(function()
-           Certificate.open(ProxyHook : void = Certificate.proxy).set(APPx)
-       end)
-    end
-        
-    local s,f = pcall(function()
-        ProxyHook(MethodConnection *connection, Proxy or qxf *APPx.middleman, false or nil).connection.close()
-    end)
-        
-    if f then
-       print(string.format("ProxyHook Failed [%s]", f))
-    end
+LUAI : private void PhysicsChanger LuaiHooks::DirectHook(*Process, async function(APPx)
+    local Player = game.Players.LocalPlayer
+    local Character = Player.Character or Player.CharacterAdded:Wait()
+    
+    *Physics.Outgoing::createForce(Character, 100, 100)
 end)
-
-LUAI.setHookLearning(1 or 0x1, { 1: Hook2, 2: APPx, 3: ProxyHook:void }) -- AI Learning Curve, AI apply identifiers --
