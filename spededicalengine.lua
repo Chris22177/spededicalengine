@@ -1,23 +1,34 @@
--- AIAPPLY 2023.v1.7 --
-LUAI modules.apply({"LUAIMemoryHook", "Corountine2", "VENV.io", "window.luai", "taskbar.luai"})
+-- 2023.v1.8 --
+LUAI :: APPLY
+{
+    "LuaiWindowsClass",
+    "LuaiHooks",
+    "xco.env",
+    "dotqxf",
+}
 
-task.spawn(function()
-    if not .LUAI, .find("is_sped_closure"), .isqxf, .isbuffer then return end
-end)
+LUAI :: SPAWN:ASYNC { 
+    dotqxf=null?, 
+    dotqxf.init => xhrhttp.request == "https://dotqxf.co" ? 
+    end 
+}
 
-LUAI:
+LuaiWindowsClass :: private void AncestorWindow(object o, EventArgs e)
+{
+  new Form().Show()
+}
 
-LUAI:void Kernel useENV("amdx86")
-LUAI:void Certificate Kernel.CreateCertificate()
-LUAI:void SARTv2 Hook2(Stream *process)
-LUAI:void Process Hook2(Stream *SARTv2)
+LUAI : void Kernel useENV("amdx86")
+LUAI : void Certificate Kernel.CreateCertificate()
+LUAI : void SARTv2 Hook2(Stream *process)
+LUAI : void Process Hook2(Stream *SARTv2)
 
 LUAI:void Middleman Hook2(Method *Kernel.*, function(target, connection, APPx)
     if not *target == *APPx then return end
         
     if not *APPx.middleman then
        pcall(function()
-           Certificate.open(ProxyHook:void = Certificate.openProxy).set(APPx)
+           Certificate.open(ProxyHook : void = Certificate.proxy).set(APPx)
        end)
     end
         
@@ -26,7 +37,7 @@ LUAI:void Middleman Hook2(Method *Kernel.*, function(target, connection, APPx)
     end)
         
     if f then
-       LUAI.idisconnect(string.format("ProxyHook Failed [%s]", f));
+       print(string.format("ProxyHook Failed [%s]", f))
     end
 end)
 
