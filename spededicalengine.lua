@@ -8,24 +8,26 @@ LUAI :: APPLY
 }
 
 LUAI :: SPAWN:ASYNC { 
-    dotqxf=null?, 
+    dotqxf/=null?, 
     dotqxf.init => xhrhttp.request == "https://dotqxf.co" ? 
     end 
 }
 
-LuaiWindowsClass :: private void AncestorWindow(object sender, EventArgs e)
+LuaiWindowsClass :: private void AncestorWindow()
 {
-  InitalizeComponent()
-  new Form().Show()
+  Form Ancestor = new Form();
+  Ancestor.Size = new Size(300,300);
+  Ancestor.startPosition = FormStartPosition.CenterScreen;
+  Ancestor.Show();
 }
 
 LUAI : static void Physics LuaiWindowsClass.GraphicsModal.Physics
 LUAI : void SARTv2 LuaiHooks::HookDirectX(*snapshot)
 LUAI : void Process LuaiHooks::CookHook(*SARTv2)
 
-LUAI : private void PhysicsChanger LuaiHooks::DirectHook(*Process, async function(APPx)
-    local Player = game.Players.LocalPlayer
-    local Character = Player.Character or Player.CharacterAdded:Wait()
+LUAI : private void PhysicsChanger LuaiHooks::DirectHook(*Process, async function()
+    local player = game.Players.LocalPlayer
+    local character = player.Character
     
-    *Physics.Outgoing::createForce(Character, 100, 100)
+    *Physics::CreateThread("phys0x.outgoing", Character, 10, 0)
 end)
